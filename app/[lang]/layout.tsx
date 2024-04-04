@@ -8,8 +8,8 @@ import { getDictionary } from './dictionaries';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Recovery Dairy",
-  description: "Keep track of your recovery with Recovery Dairy",
+  title: "Recovery Journal",
+  description: "Keep track of your recovery with Recovery Journal",
 };
 
 export default async function RootLayout({
