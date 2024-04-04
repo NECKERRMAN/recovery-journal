@@ -1,0 +1,15 @@
+{
+    "onboarding": {
+        "subtitle": "Welkom bij XXX",
+        "title": "Jouw reis naar een herstel begint hier",
+        "button": "Volgende",
+        "signUpForFree": "Meld je gratis aan"
+    },
+    "buttons": {
+        "next": "Volgende",
+        "back": "Terug",
+        "signUp": "Aanmelden",
+        "signIn": "Inloggen",
+        "lang": "Taal"
+    }
+}

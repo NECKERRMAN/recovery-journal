@@ -1,0 +1,14 @@
+{
+    "onboarding": {
+        "title": "Your road to recovery starts here",
+        "subtitle": "We are happy to see you here",
+        "signUpForFree": "Sign up for free"
+    },
+    "buttons": {
+        "next": "Next",
+        "back": "Back",
+        "signUp": "Sign Up",
+        "signIn": "Sign In",
+        "lang": "Language"
+    }
+}
