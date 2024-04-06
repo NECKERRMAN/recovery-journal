@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Globe } from 'lucide-react'
 
-export default async function NavBar({ t, lang }: any) {
+export default async function NavBar({ t, lang }: {t: any, lang: string}) {
     const { isAuthenticated } = getKindeServerSession()
 
     return (
@@ -29,7 +29,7 @@ export default async function NavBar({ t, lang }: any) {
 
                     {(await isAuthenticated()) ? (
                         <LogoutLink>
-                            <Button>Sign Out</Button>
+                            <Button>{t.buttons.signOut}</Button>
                         </LogoutLink>
                     ) : (
                         <div className="flex items-center gap-x-5">

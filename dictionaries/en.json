@@ -9,6 +9,7 @@
         "back": "Back",
         "signUp": "Sign Up",
         "signIn": "Sign In",
+        "signOut": "Sign Out",
         "lang": "Language"
     }
 }
