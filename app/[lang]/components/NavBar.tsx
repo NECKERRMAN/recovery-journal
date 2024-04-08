@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button'
 import {
     RegisterLink,
     LoginLink,
-    LogoutLink,
 } from '@kinde-oss/kinde-auth-nextjs/components'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import {
@@ -14,23 +13,27 @@ import {
     DropdownMenuItem,
 } from '@/components/ui/dropdown-menu'
 import { Globe } from 'lucide-react'
+import UserNav from './UserNav'
+
+const getFullName = (user: any) => {
+    return `${user.given_name} ${user.family_name}`
+}
 
 export default async function NavBar({ t, lang }: {t: any, lang: string}) {
-    const { isAuthenticated } = getKindeServerSession()
+    const { isAuthenticated, getUser } = getKindeServerSession()
+    const user = await getUser();
 
     return (
         <nav className="border-b bg-background h-[10vh] flex items-center">
             <div className="container flex items-center justify-between">
                 <Link href="/">
-                    <h1 className="font-bold text-3xl">Recovery Journal</h1>
+                    <h1 className="font-bold text-3xl">Recovery <span className="text-primary">Journal</span></h1>
                 </Link>
                 <div className="flex items-center gap-x-5">
                     <ThemeToggle />
 
                     {(await isAuthenticated()) ? (
-                        <LogoutLink>
-                            <Button>{t.buttons.signOut}</Button>
-                        </LogoutLink>
+                        <UserNav email={user?.email as string} image={user?.picture as string} name={getFullName(user) as string} />
                     ) : (
                         <div className="flex items-center gap-x-5">
                             <LoginLink>

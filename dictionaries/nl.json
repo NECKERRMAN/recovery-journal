@@ -1,8 +1,7 @@
 {
     "onboarding": {
-        "subtitle": "Welkom bij XXX",
+        "subtitle": "Welkom bij Recovery Journal",
         "title": "Jouw reis naar een herstel begint hier",
-        "button": "Volgende",
         "signUpForFree": "Meld je gratis aan"
     },
     "buttons": {

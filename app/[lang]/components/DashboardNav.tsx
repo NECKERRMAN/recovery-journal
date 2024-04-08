@@ -1,29 +1,13 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { Home, Settings, User } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
-export const navItems = [
-    {
-        name: 'Home',
-        href: '/dashboard',
-        icon: Home,
-    },
-    {
-        name: 'Profile',
-        href: '/dashboard/profile',
-        icon: User,
-    },
-    {
-        name: 'Settings',
-        href: '/dashboard/settings',
-        icon: Settings,
-    },
-]
+import { useParams, usePathname } from 'next/navigation'
+import { navItems } from './UserNav'
 
 export default function DashboardNav() {
     const pathname = usePathname()
+    const { lang } = useParams();
+    
     return (
         <nav className="grid items-start gap-2">
             {navItems.map((item, index) => (
@@ -31,7 +15,7 @@ export default function DashboardNav() {
                     <span
                         className={cn(
                             'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground',
-                            pathname === item.href
+                            pathname === `/${lang}${item.href}`
                                 ? 'bg-accent'
                                 : 'bg-transparent'
                         )}
