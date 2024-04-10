@@ -31,8 +31,6 @@ async function getData(userId: string) {
         },
         select: {
             id: true,
-            name: true,
-            email: true,
             colorScheme: true,
         },
     })
@@ -53,7 +51,6 @@ export default async function SettingsPage() {
                 id: user?.id,
             },
             data: {
-                name: (formData.get('name') as string) ?? '',
                 colorScheme: (formData.get('color') as string) ?? 'theme-slate',
             },
         })
@@ -74,37 +71,14 @@ export default async function SettingsPage() {
             <Card>
                 <form action={handleData}>
                     <CardHeader>
-                        <CardTitle>Personal Data</CardTitle>
+                        <CardTitle>Your preferences</CardTitle>
                         <CardDescription>
-                            Keep your personal information up to date. Don&#39;t
+                            Set your preferences here. Don&#39;t
                             forget to save!
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-4">
-                            <div className="space-y-2">
-                                <Label>Full Name</Label>
-                                <Input
-                                    name="name"
-                                    id="name"
-                                    type="text"
-                                    placeholder="Tyler Durden"
-                                    defaultValue={data?.name ?? undefined}
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <Label>E-mail</Label>
-                                <Input
-                                    name="email"
-                                    id="email"
-                                    type="email"
-                                    placeholder="tyler@mp.xyz"
-                                    defaultValue={data?.email as string}
-                                    disabled
-                                />
-                            </div>
-
                             <div className="space-y-2">
                                 <Label>Color Scheme</Label>
                                 <Select

@@ -1,12 +1,11 @@
 'use client'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { navItems } from './UserNav'
 
 export default function DashboardNav() {
     const pathname = usePathname()
-    const { lang } = useParams()
 
     return (
         <nav className="grid items-start gap-2">
@@ -15,7 +14,7 @@ export default function DashboardNav() {
                     <span
                         className={cn(
                             'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground',
-                            pathname === `/${lang}${item.href}`
+                            pathname === `${item.href}`
                                 ? 'bg-accent'
                                 : 'bg-transparent'
                         )}
