@@ -58,19 +58,19 @@ export default async function DashboardPage() {
                 </div>
 
                 {data?.Subscription?.status === 'active' ? (
-                    <Button asChild>
-                        <Link href="/dashboard/new">
+                    <Link href="/dashboard/new">
+                        <Button>
                             <PlusCircle size={16} className="mr-2" />
                             New entry
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 ) : (
-                    <Button asChild>
-                        <Link href="/dashboard/billing">
+                    <Link href="/dashboard/billing">
+                        <Button>
                             <PlusCircle size={16} className="mr-2" />
                             Buy access
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 )}
             </div>
 
@@ -120,9 +120,7 @@ export default async function DashboardPage() {
                                         name="entryId"
                                         value={entry.id}
                                     />
-                                    <Button variant="destructive" size="icon">
-                                        <TrashEntry />
-                                    </Button>
+                                    <TrashEntry />
                                 </form>
                             </div>
                         </Card>
