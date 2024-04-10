@@ -19,21 +19,27 @@ const getFullName = (user: any) => {
     return `${user.given_name} ${user.family_name}`
 }
 
-export default async function NavBar({ t, lang }: {t: any, lang: string}) {
+export default async function NavBar({ t, lang }: { t: any; lang: string }) {
     const { isAuthenticated, getUser } = getKindeServerSession()
-    const user = await getUser();
+    const user = await getUser()
 
     return (
         <nav className="border-b bg-background h-[10vh] flex items-center">
             <div className="container flex items-center justify-between">
                 <Link href="/">
-                    <h1 className="font-bold text-3xl">Recovery <span className="text-primary">Journal</span></h1>
+                    <h1 className="font-bold text-3xl">
+                        Recovery <span className="text-primary">Journal</span>
+                    </h1>
                 </Link>
                 <div className="flex items-center gap-x-5">
                     <ThemeToggle />
 
                     {(await isAuthenticated()) ? (
-                        <UserNav email={user?.email as string} image={user?.picture as string} name={getFullName(user) as string} />
+                        <UserNav
+                            email={user?.email as string}
+                            image={user?.picture as string}
+                            name={getFullName(user) as string}
+                        />
                     ) : (
                         <div className="flex items-center gap-x-5">
                             <LoginLink>
@@ -68,9 +74,13 @@ export default async function NavBar({ t, lang }: {t: any, lang: string}) {
                             </DropdownMenuItem>
                             <DropdownMenuItem>
                                 <Link href="/nl">
-                                    <Button variant={
-                                        lang === 'nl' ? 'default' : 'ghost'
-                                    }>Nederlands</Button>
+                                    <Button
+                                        variant={
+                                            lang === 'nl' ? 'default' : 'ghost'
+                                        }
+                                    >
+                                        Nederlands
+                                    </Button>
                                 </Link>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
