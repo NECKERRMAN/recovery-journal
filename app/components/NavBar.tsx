@@ -6,20 +6,13 @@ import {
     LoginLink,
 } from '@kinde-oss/kinde-auth-nextjs/components'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import {
-    DropdownMenu,
-    DropdownMenuTrigger,
-    DropdownMenuContent,
-    DropdownMenuItem,
-} from '@/components/ui/dropdown-menu'
-import { Globe } from 'lucide-react'
 import UserNav from './UserNav'
 
 const getFullName = (user: any) => {
     return `${user.given_name} ${user.family_name}`
 }
 
-export default async function NavBar({ t, lang }: { t: any; lang: string }) {
+export default async function NavBar() {
     const { isAuthenticated, getUser } = getKindeServerSession()
     const user = await getUser()
 
@@ -43,17 +36,18 @@ export default async function NavBar({ t, lang }: { t: any; lang: string }) {
                     ) : (
                         <div className="flex items-center gap-x-5">
                             <LoginLink>
-                                <Button>{t.buttons.signIn}</Button>
+                                <Button>Sign in</Button>
                             </LoginLink>
 
                             <RegisterLink>
                                 <Button variant={'secondary'}>
-                                    {t.buttons.signUp}
+                                    Sign up
                                 </Button>
                             </RegisterLink>
                         </div>
                     )}
-
+                    {/* Switch languages - does not work atm */}
+                    {/*
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon">
@@ -85,6 +79,7 @@ export default async function NavBar({ t, lang }: { t: any; lang: string }) {
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
+                                    */}
                 </div>
             </div>
         </nav>

@@ -17,7 +17,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select'
-import prisma from '@/app/[lang]/lib/db'
+import prisma from '@/app/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { SubmitButton } from '../../components/buttons/SubmitButtons'
 import { revalidatePath, unstable_noStore as noStore } from 'next/cache'

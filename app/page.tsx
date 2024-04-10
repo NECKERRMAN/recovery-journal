@@ -1,11 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs/components';
-import { getDictionary } from './dictionaries';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation';
 
 export default async function Home({ params: { lang } }: any) {
-  const dict = await getDictionary(lang)
   const { isAuthenticated } = getKindeServerSession();
 
   if (await isAuthenticated()) {
@@ -19,12 +17,12 @@ export default async function Home({ params: { lang } }: any) {
           <div>
             <span className="w-auto px-6 py-3 rounded-full bg-secondary">
               <span className="text-sm font-medium text-primary">
-                {dict.onboarding.subtitle}
+                We are happy to see you here
               </span>
             </span>
 
             <h1 className="mt-8 font-extrabold text-3xl tracking-light lg:text-6xl">
-              {dict.onboarding.title}
+              Your road to recovery starts here
             </h1>
 
             <p className="max-w-xl mx-auto mt-8 text-base lg:text-xl text-secondary-foreground">
@@ -36,7 +34,7 @@ export default async function Home({ params: { lang } }: any) {
           <div className="flex justify-center max-w-sm mx-auto mt-10">
             <RegisterLink>
               <Button size="lg" className="w-full">
-                {dict.onboarding.signUpForFree}
+                Sign up for free
               </Button>
             </RegisterLink>
           </div>

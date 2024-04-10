@@ -1,7 +1,7 @@
-import { stripe } from "@/app/[lang]/lib/stripe";
+import { stripe } from "@/app/lib/stripe";
 import { headers } from "next/headers";
 import Stripe from "stripe";
-import prisma from "@/app/[lang]/lib/db";
+import prisma from "@/app/lib/db";
 
 export async function POST(req: Request) {
   const body = await req.text();

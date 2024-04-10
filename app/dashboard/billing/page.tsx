@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -7,15 +6,15 @@ import {
     CardTitle,
 } from '@/components/ui/card'
 import { CheckCircle2 } from 'lucide-react'
-import prisma from '../../lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { getStripeSession, stripe } from '../../lib/stripe'
+import { getStripeSession, stripe } from '@/app/lib/stripe';
 import { redirect } from 'next/navigation'
 import {
     StripePortal,
     StripeSubscriptionCreateButton,
 } from '../../components/buttons/SubmitButtons'
 import { unstable_noStore as noStore } from 'next/cache'
+import prisma from '@/app/lib/db'
 
 const featureItems = [
     { name: 'Lorem Ipsum' },

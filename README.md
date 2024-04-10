@@ -26,10 +26,17 @@ This application is created with the purpose of helping people who are in active
 
 More to come...
 
+## Known issues
+
+Language is now (back to) hardcoded in English. Trying to figure out hydration error in the app when switching languages.
+
 ## Roadmap
 
 -   ~~Authentication~~
--   ~~Translations (i18n)~~
+-  ~~Database~~
+- ~~CRUD journal entries~~
+-   User Profile
+-   Translations (i18n)
 - ...
 
 ## Tech
@@ -38,3 +45,4 @@ More to come...
 - [Tailwind CSS (styling)](https://tailwindcss.com/)
 - [Kinde (Auth)](https://kinde.com/)
 - [Supabase (Database)](https://supabase.com/)
+- [Stripe (Payment)](https://stripe.com/)

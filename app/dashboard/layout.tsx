@@ -1,10 +1,9 @@
 import { ReactNode } from 'react'
 import DashboardNav from '../components/DashboardNav'
-import { getDictionary } from '../dictionaries'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
-import prisma from '../lib/db'
-import { stripe } from '../lib/stripe'
+import prisma from '@/app/lib/db'
+import { stripe } from '@/app/lib/stripe'
 import { unstable_noStore as noStore } from 'next/cache'
 
 async function getData({

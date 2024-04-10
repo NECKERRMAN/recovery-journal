@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Edit, File, PlusCircle } from 'lucide-react'
 import Link from 'next/link'
-import prisma from '../lib/db'
+import prisma from '@/app/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Card } from '@/components/ui/card'
 import { TrashEntry } from '../components/buttons/SubmitButtons'
