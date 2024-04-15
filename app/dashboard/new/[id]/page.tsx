@@ -1,4 +1,5 @@
 import { SubmitButton } from '@/app/components/buttons/SubmitButtons'
+import EntrySymptoms from '@/app/components/entry/EntrySymptoms'
 import prisma from '@/app/lib/db'
 import { Button } from '@/components/ui/button'
 import {
@@ -34,6 +35,7 @@ async function getData({
             id: true,
             title: true,
             content: true,
+            symptoms: true,
         },
     })
 
@@ -46,6 +48,7 @@ export default async function DynamicRoute({
     params: { id: string }
 }) {
     const { getUser } = getKindeServerSession()
+
     const user = await getUser()
     const data = await getData({
         entryId: params.id,
@@ -71,6 +74,12 @@ export default async function DynamicRoute({
                 content:
                     (formData.get('content') as string) ??
                     'Nothing to see here...',
+                symptoms: {
+                    set:
+                        (formData.get('symptoms') as string)
+                            .split(',')
+                            .filter((s) => s.trim() !== '') ?? [],
+                },
             },
         })
 
@@ -106,6 +115,10 @@ export default async function DynamicRoute({
                             required
                             defaultValue={data?.content}
                         />
+                    </div>
+
+                    <div className="flex flex-col gap-y-2">
+                        <EntrySymptoms data={data?.symptoms} />
                     </div>
                 </CardContent>
 

@@ -44,6 +44,7 @@ model Entry {
   id        String    @id @default(uuid())
   title     String
   content   String
+  symptoms  String[]  @default([])
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?

@@ -9,6 +9,7 @@ interface EntryCardProps {
         id: string
         title: string
         content: string
+        symptoms: string[]
         createdAt: Date
     }
     deleteEntry: (formData: FormData) => void
@@ -29,7 +30,29 @@ export default function EntryCard({ entry, deleteEntry }: EntryCardProps) {
                         dateStyle: 'full',
                     }).format(new Date(entry.createdAt))}
                 </p>
-                <p className="text-muted-foreground">{entry.content}</p>
+                <div className="space-y-2 mb-4">
+                    <p className="font-semibold">Symptoms</p>
+                    <ul className="flex gap-x-2">
+                        {entry.symptoms.length === 0 && (
+                            <li className="text-muted-foreground">
+                                No symptoms
+                            </li>
+                        )}
+                        {entry.symptoms.length > 0 &&
+                            entry.symptoms.map((symptom, index) => (
+                                <li
+                                    key={index}
+                                    className="text-sm text-slate-600 p-2 rounded-lg bg-slate-200"
+                                >
+                                    {symptom}
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                    <p className="font-semibold">Notes</p>
+                    <p className="text-muted-foreground">{entry.content}</p>
+                </div>
             </div>
             <div className="flex gap-x-4">
                 <Link href={`/dashboard/new/${entry.id}`}>

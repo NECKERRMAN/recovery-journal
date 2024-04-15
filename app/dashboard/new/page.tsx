@@ -35,6 +35,12 @@ async function NewEntry() {
                 content:
                     (formData.get('content') as string) ??
                     'Nothing to see here...',
+                symptoms: {
+                    set:
+                        (formData.get('symptoms') as string)
+                            .split(',')
+                            .filter((s) => s.trim() !== '') ?? [],
+                },
             },
         })
 
@@ -65,6 +71,20 @@ async function NewEntry() {
                             name="content"
                             placeholder="Describe your day"
                             required
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-y-2">
+                        <Label>
+                            Symptoms{' '}
+                            <span className="text-sm text-muted-foreground">
+                                separate symptoms with commas
+                            </span>
+                        </Label>
+                        <Input
+                            type="text"
+                            name="symptoms"
+                            placeholder="Enter symptoms separated by commas"
                         />
                     </div>
                 </CardContent>

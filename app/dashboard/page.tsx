@@ -3,8 +3,6 @@ import { Edit, File, PlusCircle } from 'lucide-react'
 import Link from 'next/link'
 import prisma from '@/app/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { Card } from '@/components/ui/card'
-import { TrashEntry } from '../components/buttons/SubmitButtons'
 import { revalidatePath, unstable_noStore as noStore } from 'next/cache'
 import EntryCard from '../components/cards/EntryCard'
 
@@ -16,7 +14,18 @@ async function getData(userId: string) {
             id: userId,
         },
         select: {
-            Entries: true,
+            Entries: {
+                select: {
+                    id: true,
+                    title: true,
+                    content: true,
+                    symptoms: true,
+                    createdAt: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                },
+            },
             Subscription: {
                 select: {
                     status: true,
@@ -90,9 +99,13 @@ export default async function DashboardPage() {
                     </p>
                 </div>
             ) : (
-                <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col gap-y-4 mb-4">
                     {data?.Entries.map((entry) => (
-                        <EntryCard key={entry.id} entry={entry} deleteEntry={deleteEntry} />
+                        <EntryCard
+                            key={entry.id}
+                            entry={entry}
+                            deleteEntry={deleteEntry}
+                        />
                     ))}
                 </div>
             )}
