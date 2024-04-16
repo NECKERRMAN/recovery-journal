@@ -6,7 +6,6 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
     Select,
@@ -32,6 +31,7 @@ async function getData(userId: string) {
         select: {
             id: true,
             colorScheme: true,
+            locale: true,
         },
     })
 
@@ -52,9 +52,10 @@ export default async function SettingsPage() {
             },
             data: {
                 colorScheme: (formData.get('color') as string) ?? 'theme-slate',
+                locale: (formData.get('locale') as string) ?? 'en-US',
             },
         })
-
+        // Revalidate the cache
         revalidatePath('/', 'layout')
     }
 
@@ -73,8 +74,7 @@ export default async function SettingsPage() {
                     <CardHeader>
                         <CardTitle>Your preferences</CardTitle>
                         <CardDescription>
-                            Set your preferences here. Don&#39;t
-                            forget to save!
+                            Set your preferences here. Don&#39;t forget to save!
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -108,6 +108,32 @@ export default async function SettingsPage() {
                                             </SelectItem>
                                             <SelectItem value="theme-zinc">
                                                 Zinc
+                                            </SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            {/* Language selector doesn't work yet */}
+                            <div className="space-y-2">
+                                <Label>Language</Label>
+                                <Select
+                                    name="locale"
+                                    defaultValue={data?.locale}
+                                >
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select a language" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>Language</SelectLabel>
+                                            <SelectItem value="fr-FR">
+                                                Français
+                                            </SelectItem>
+                                            <SelectItem value="en-US">
+                                                English
+                                            </SelectItem>
+                                            <SelectItem value="nl-NL">
+                                                Nederlands
                                             </SelectItem>
                                         </SelectGroup>
                                     </SelectContent>

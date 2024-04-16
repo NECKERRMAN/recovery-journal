@@ -7,8 +7,10 @@ import { useEffect, useState } from 'react'
 export default function EntrySymptoms(data: any) {
     const [symptoms, setSymptoms] = useState<string[]>([])
 
+    /* Set data once when loaded */
     useEffect(() => {
         setSymptoms(data.data)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

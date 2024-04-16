@@ -20,6 +20,7 @@ model User {
   email            String        @unique
   stripeCustomerId String?       @unique
   colorScheme      String        @default("light")
+  locale           String        @default("en")
   Subscription     Subscription?
   Entries          Entry[]
   createdAt        DateTime      @default(now())
