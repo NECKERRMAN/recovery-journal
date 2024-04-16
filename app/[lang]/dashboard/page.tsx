@@ -6,6 +6,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Card } from '@/components/ui/card'
 import { TrashEntry } from '../components/buttons/SubmitButtons'
 import { revalidatePath, unstable_noStore as noStore } from 'next/cache'
+import { getDictionary } from '../dictionaries'
 
 async function getData(userId: string) {
     // Keep data dynamic
@@ -27,9 +28,10 @@ async function getData(userId: string) {
     return data
 }
 
-export default async function DashboardPage() {
+export default async function DashboardPage({ params: { lang } }: any) {
     const { getUser } = getKindeServerSession()
 
+    const dict = await getDictionary(lang)
     const user = await getUser()
     const data = await getData(user?.id as string)
 
@@ -50,10 +52,10 @@ export default async function DashboardPage() {
             <div className="flex items-center justify-between px-2">
                 <div className="grid gap-1">
                     <h1 className="text-3xl md:text-4xl">
-                        Your journal entries
+                        {dict.dashboard.title}
                     </h1>
                     <p className="text-lg text-muted-foreground">
-                        Create, read and edit your journal entries
+                        {dict.dashboard.subtitle}
                     </p>
                 </div>
 
@@ -120,9 +122,7 @@ export default async function DashboardPage() {
                                         name="entryId"
                                         value={entry.id}
                                     />
-                                    <Button variant="destructive" size="icon">
-                                        <TrashEntry />
-                                    </Button>
+                                    <TrashEntry />
                                 </form>
                             </div>
                         </Card>

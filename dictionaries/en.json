@@ -11,5 +11,9 @@
         "signIn": "Sign In",
         "signOut": "Sign Out",
         "lang": "Language"
+    },
+    "dashboard": {
+        "title": "Your journal",
+        "subtitle": "Your daily progress"
     }
 }

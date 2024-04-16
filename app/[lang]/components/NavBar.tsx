@@ -62,7 +62,7 @@ export default async function NavBar({ t, lang }: { t: any; lang: string }) {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem>
-                                <Link href="/en">
+                                <Link href="/en/dashboard">
                                     <Button
                                         variant={
                                             lang === 'en' ? 'default' : 'ghost'

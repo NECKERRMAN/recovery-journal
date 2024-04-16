@@ -11,5 +11,9 @@
         "signIn": "Inloggen",
         "signOut": "Uitloggen",
         "lang": "Taal"
+    },
+    "dashboard": {
+        "title": "Jouw dashboard",
+        "subtitle": "Hier kun je jouw voortgang volgen en nieuwe activiteiten ontdekken"
     }
 }
