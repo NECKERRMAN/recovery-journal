@@ -55,9 +55,7 @@ export default async function ProfilePage() {
             <div className="flex items-center justify-between px-2">
                 <div className="grid gap-1">
                     <h1 className="text-2xl md:text-3xl font-bold">Profile</h1>
-                    <p className="text-muted-foreground">
-                        Manage your profile
-                    </p>
+                    <p className="text-muted-foreground">Manage your profile</p>
                 </div>
             </div>
             <Card>
